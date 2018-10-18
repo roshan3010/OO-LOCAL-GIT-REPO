@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<systemProperty id="ad0bae62-a376-476d-a94c-fb5dca1a82fb">
+  <descriptionCdata><![CDATA[ad0bae62-a376-476d-a94c-fb5dca1a82fb.description=This is the number of  days from current days to obtain paper settlement request
+]]></descriptionCdata>
+  <annotation>ad0bae62-a376-476d-a94c-fb5dca1a82fb.description</annotation>
+  <name>paperDays CI05</name>
+  <value>{OBFUSCATED}mtggGXKeldEXaboXLasBrA==</value>
+</systemProperty>

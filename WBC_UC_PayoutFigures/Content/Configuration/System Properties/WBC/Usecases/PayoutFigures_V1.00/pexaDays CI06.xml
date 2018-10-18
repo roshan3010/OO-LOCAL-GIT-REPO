@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<systemProperty id="979aefae-6602-4102-8426-6b9f1a5649a7">
+  <descriptionCdata><![CDATA[979aefae-6602-4102-8426-6b9f1a5649a7.description=Number of Days from current Date to obtain Pexa Settlement Request
+]]></descriptionCdata>
+  <annotation>979aefae-6602-4102-8426-6b9f1a5649a7.description</annotation>
+  <name>pexaDays CI06</name>
+  <value>{OBFUSCATED}yipM7CWyQ5wfHeuz/nRXFQ==</value>
+</systemProperty>
