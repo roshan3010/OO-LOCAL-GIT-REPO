@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<systemProperty id="7f386435-633c-4165-82d9-c7b92aace2a2">
+  <descriptionCdata><![CDATA[7f386435-633c-4165-82d9-c7b92aace2a2.description=This is the regular expression used to retrieve stax ID from SLS comments
+]]></descriptionCdata>
+  <annotation>7f386435-633c-4165-82d9-c7b92aace2a2.description</annotation>
+  <name>staxRegularExpression</name>
+  <value>{OBFUSCATED}ZUKwZHTjrLEKYUrMeTxJ9Q==</value>
+</systemProperty>

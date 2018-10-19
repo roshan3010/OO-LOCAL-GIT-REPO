@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<systemProperty id="a75cfc4c-69c0-463e-8401-31666bd60f9a">
+  <descriptionCdata><![CDATA[a75cfc4c-69c0-463e-8401-31666bd60f9a.description=This is the table name to store internal SLS queue
+]]></descriptionCdata>
+  <annotation>a75cfc4c-69c0-463e-8401-31666bd60f9a.description</annotation>
+  <name>slsTableName</name>
+  <value>{OBFUSCATED}TThp9dWPfDCF0lawVqaAHQ==</value>
+</systemProperty>

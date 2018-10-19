@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<systemProperty id="30b1eff9-9b7b-44ca-81e0-f1c7d971ce68">
+  <descriptionCdata><![CDATA[30b1eff9-9b7b-44ca-81e0-f1c7d971ce68.description=Cleanup days to delete record from SLS Automation DB
+]]></descriptionCdata>
+  <annotation>30b1eff9-9b7b-44ca-81e0-f1c7d971ce68.description</annotation>
+  <name>cleanupDays</name>
+  <value>{OBFUSCATED}mtggGXKeldEXaboXLasBrA==</value>
+</systemProperty>
