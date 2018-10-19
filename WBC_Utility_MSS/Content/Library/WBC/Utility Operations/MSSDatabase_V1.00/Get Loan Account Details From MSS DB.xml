@@ -1,0 +1,2063 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow id="9726252f-8002-4490-b148-1ac61f8d6e2e">
+  <descriptionCdata><![CDATA[9726252f-8002-4490-b148-1ac61f8d6e2e.3d50068f-7ff0-4a27-9140-0a1f8f780746.description=<pre>Checks if a number or word is greater than another number or word. Word comparison is case-sensitive in alphabetical order.\n\nInputs\:\nvalue1 - The first value.\nvalue2 - The second value.\n\nReturns\:\nvalue1 > value2\n\nResponses\:\nsuccess - The boolean operation was evaluated to true.\nfailure - Something went wrong or the boolean operation returned false.\n</pre>
+9726252f-8002-4490-b148-1ac61f8d6e2e.84c74b04-8f45-4cf5-8cd7-cb0d8fa8e0dd.description=<pre>\nThis operation does not do anything. It can be used to filter flow variables by defining them as inputs and filtering them in the Results tab.\n\nInputs\:\n    field1 \u2013 An optional input that can be used for filtering flow variables.\n    field2 \u2013 An optional input that can be used for filtering flow variables.\n    field3 \u2013 An optional input that can be used for filtering flow variables.\n    field4 \u2013 An optional input that can be used for filtering flow variables.\n\nResults\:\n    returnResult - This is the primary output. It contains the value of  "field1" as it was specified at input or when filtered. \n\nResponses\:\n    success - The operation completed as stated in the description.\n</pre>
+]]></descriptionCdata>
+  <annotation></annotation>
+  <name>Get Loan Account Details From MSS DB</name>
+  <categories/>
+  <inputs>
+    <staticBinding id="18771c3b-d496-408c-99a6-0e5a734987be">
+      <annotation></annotation>
+      <fromContextKey>loanAccountNumber</fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>loanAccountNumber</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value></value>
+      <record>false</record>
+    </staticBinding>
+  </inputs>
+  <possibleResponses>
+    <opResponse id="a046ce95-c9d9-420f-91be-288d8fbfeca5">
+      <annotation></annotation>
+      <name>failure</name>
+      <isDefault>false</isDefault>
+      <onFailure>true</onFailure>
+      <type>ERROR</type>
+      <matchRules/>
+    </opResponse>
+    <opResponse id="f2f410d4-a14d-4c92-8166-21c2e98b8bf7">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>true</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules/>
+    </opResponse>
+    <opResponse id="c7141b3a-5536-41f2-9862-2183d430c5cc">
+      <annotation></annotation>
+      <name>unknown</name>
+      <isDefault>false</isDefault>
+      <onFailure>false</onFailure>
+      <type>NO_ACTION_TAKEN</type>
+      <matchRules/>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="5bb49682-0c7b-413f-b35a-5b4d38c4dac8">
+    <annotation></annotation>
+    <name>FailureMessage</name>
+    <fieldName>FailureMessage</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="b1b004c8-c69c-473f-b580-de13ab4458b4">
+    <baseIcon>flow.png</baseIcon>
+    <basePath>System</basePath>
+    <readOnly>false</readOnly>
+    <layers/>
+  </iconSpec>
+  <callouts/>
+  <checkPointFlow>true</checkPointFlow>
+  <compatibleRuntimeContext>false</compatibleRuntimeContext>
+  <historyCheckPointFlow>true</historyCheckPointFlow>
+  <steps>
+    <step id="8761c030-55f1-4244-8994-4ab0ce265b30">
+      <annotation></annotation>
+      <name>Get loan Account Details</name>
+      <bounds>
+        <x>0.0</x>
+        <y>0.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="0ed91229-c6a3-4e48-903c-b00e7b464947">
+        <baseIcon>flow.png</baseIcon>
+        <basePath>System</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="17036b41-6bad-40d2-b708-83e7c09a1887">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>tableName</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>${WBC/Utility Operations/MSS_V1.00/mssSchema}.${WBC/Utility Operations/MSS_V1.00/mssViewAutomation}</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="fda953f8-c06e-4c75-8fff-e4584d5f0118">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>query</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>SELECT
+    Z_NUMBER,
+    LOAN_MATURITY_DATE,
+    UDC_N77,
+    PROD_DESCRIPTION,
+    PRODUCT_CD,
+    PAYMENT_TYPE,
+    ARREARS_AMT,
+    NEXT_REPAYMENT_DATE,
+    LOAN_START_DATE,
+    FIXED,
+    FIXED_END_DATE,
+    CONCESSION_CODE,
+    ORIGINAL_LVR,
+    CURRENT_LVR,
+    PROG_DRAW,
+    GUARANTOR_FLAG,
+    EXCESS_FUNDS_AMT,
+    REDRAW_FLAG,
+    CURRENT_LOAN_LIMIT,
+    CURRENT_LOAN_BAL,
+    ORIGINAL_LOAN_TERM,
+    ORIG_IO_DURATION,
+    IO_EXPIRY_DATE,
+    UDC_B60,
+    CONDITION_CODE_98,
+    TRAN,
+    REQ_REPAYMENT_AMT,
+    DD_FREQUENCY,
+    CURRENT_LOAN_TERM,
+    ACTIVE_DISCOUNT,
+    PACKAGE_TYPE,
+    DD_EXIST,
+    FIRST_NAME_1,
+    LAST_NAME_1,
+    NEXT_DRAFT_DATE,
+    PCON
+FROM ${tableName}
+WHERE ACCOUNT_NUM = &apos;${loanAccountNumber}&apos;</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="1b8d5acd-1748-4500-97d1-7831f7690de5">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>columnDelimiter</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>;/;</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="b2f066d7-b6b0-49de-9c4f-15cbb47638aa">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>rowDelimiter</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>?|?</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="9ff31b09-759f-420b-8075-d8acb4f35b93">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>3d50068f-7ff0-4a27-9140-0a1f8f780746</refId>
+          </destination>
+          <source>
+            <refId>8761c030-55f1-4244-8994-4ab0ce265b30</refId>
+          </source>
+          <positions>
+            <point>
+              <x>80.0</x>
+              <y>94.0</y>
+            </point>
+            <point>
+              <x>290.0</x>
+              <y>124.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="3eab0b83-b159-4c5f-9a82-20201dfb2da8">
+          <annotation></annotation>
+          <name>automation failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>42563850-d914-4d10-af42-17d599a0a7bd</refId>
+          </destination>
+          <source>
+            <refId>8761c030-55f1-4244-8994-4ab0ce265b30</refId>
+          </source>
+          <positions>
+            <point>
+              <x>80.0</x>
+              <y>94.0</y>
+            </point>
+            <point>
+              <x>80.0</x>
+              <y>244.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>21027980-fca3-42f8-b5b5-37a2a81971b1</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="32ac5036-a0fc-46f0-a98d-ea1a1f0e6eb8">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>columnDelimiter</contextKey>
+          <expression id="21a46512-2cad-4d08-86ae-069e4682c4c5">
+            <annotation></annotation>
+            <name>Input: columnDelimiter</name>
+            <fieldName>columnDelimiter</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="5249dc36-46df-4460-a4e5-98e1899c5fd1">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>rowCount</contextKey>
+          <expression id="c0b57c8f-23da-476d-9882-0f02ec18286a">
+            <annotation></annotation>
+            <name>Result: rowCount</name>
+            <fieldName>rowCount</fieldName>
+            <sourceType>AVAILABLE_RESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="a05234b7-0bc6-4cef-9278-7fd66a7456f9">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>errorMessage</contextKey>
+          <expression id="dae94acd-3b16-40f5-9440-382990572b93">
+            <annotation></annotation>
+            <name>Result: errorMessage</name>
+            <fieldName>errorMessage</fieldName>
+            <sourceType>AVAILABLE_RESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="dafc05bd-892c-4642-b840-40532c2a6d48">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>queryResult</contextKey>
+          <expression id="91817a8d-14f7-4cce-8e56-d6555d1f2608">
+            <annotation></annotation>
+            <name>Result: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>AVAILABLE_RESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="5aa25a76-e31d-47e1-b734-62c0d1876fcf">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>columnNames</contextKey>
+          <expression id="706d1050-b3ff-4339-a75b-559adbe44e2f">
+            <annotation></annotation>
+            <name>Result: columnNames</name>
+            <fieldName>columnNames</fieldName>
+            <sourceType>AVAILABLE_RESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="3d50068f-7ff0-4a27-9140-0a1f8f780746">
+      <annotation>9726252f-8002-4490-b148-1ac61f8d6e2e.3d50068f-7ff0-4a27-9140-0a1f8f780746.description</annotation>
+      <name>Row Count &gt; 0?</name>
+      <bounds>
+        <x>140.0</x>
+        <y>0.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="3496427b-7a51-40f1-a792-5ed28da7ecba">
+        <baseIcon>calculator.png</baseIcon>
+        <basePath>Others</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="4eeb03f7-6f61-4659-a5ee-6a86f6d216c0">
+          <annotation></annotation>
+          <fromContextKey>rowCount</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>value1</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="0155c07f-43ab-45f3-a0ad-12daf6b07ebe">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>value2</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>0</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="85e358b9-eef1-4ae1-a73e-7265b1f47688">
+          <annotation></annotation>
+          <toContextKey></toContextKey>
+          <fromContextKey></fromContextKey>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <recordKey></recordKey>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>operation</inputSymbol>
+          <listDelimiter></listDelimiter>
+          <value>&gt;</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="343a9da7-4c79-4fca-9cbc-42680bfc4ed9">
+          <annotation></annotation>
+          <name>yes</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>84c74b04-8f45-4cf5-8cd7-cb0d8fa8e0dd</refId>
+          </destination>
+          <source>
+            <refId>3d50068f-7ff0-4a27-9140-0a1f8f780746</refId>
+          </source>
+          <positions>
+            <point>
+              <x>290.0</x>
+              <y>124.0</y>
+            </point>
+            <point>
+              <x>440.0</x>
+              <y>94.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="0984dd50-cc01-405b-a81b-73eb905a865a">
+          <annotation></annotation>
+          <name>no</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>fe8cc599-63fd-4968-8546-9280a41ec716</refId>
+          </destination>
+          <source>
+            <refId>3d50068f-7ff0-4a27-9140-0a1f8f780746</refId>
+          </source>
+          <positions>
+            <point>
+              <x>190.0</x>
+              <y>34.0</y>
+            </point>
+            <point>
+              <x>200.0</x>
+              <y>184.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>6156c7f6-a5be-4045-be00-0f2fc778290e</refId>
+      </opRef>
+      <assignments/>
+      <throttleSize>0</throttleSize>
+    </step>
+    <returnStep id="42563850-d914-4d10-af42-17d599a0a7bd">
+      <annotation></annotation>
+      <name>Error : failure</name>
+      <bounds>
+        <x>0.0</x>
+        <y>180.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="bcc4b216-7aa7-4669-b868-3cb4b96709e3">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>errorMessage</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="5678d176-91a4-4829-b796-cebb846ddd48">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>failureFlag</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>True</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="48c225ff-4d98-4d35-8b13-751f9e72e9a9">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>42563850-d914-4d10-af42-17d599a0a7bd</refId>
+          </destination>
+          <source>
+            <refId>42563850-d914-4d10-af42-17d599a0a7bd</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>ERROR</returnStepType>
+      <assignments>
+        <flowVariableAssignment id="f762fd6c-f9ab-496d-97dc-34cd0d14d989">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>failureFlag</contextKey>
+          <expression id="404c8f09-7262-441b-a549-67f87e70fd81">
+            <annotation></annotation>
+            <name>Input: failureFlag</name>
+            <fieldName>failureFlag</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="87501fe9-4a39-41c0-b674-39af472c379f">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>errorMessage</contextKey>
+          <expression id="bf6f0963-4a99-46a6-9a7e-6d59d3645dfc">
+            <annotation></annotation>
+            <name>Input: errorMessage</name>
+            <fieldName>errorMessage</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+    </returnStep>
+    <step id="84c74b04-8f45-4cf5-8cd7-cb0d8fa8e0dd">
+      <annotation>9726252f-8002-4490-b148-1ac61f8d6e2e.84c74b04-8f45-4cf5-8cd7-cb0d8fa8e0dd.description</annotation>
+      <name>Format DB results</name>
+      <bounds>
+        <x>290.0</x>
+        <y>0.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="1a2ef19f-2dca-4b14-97dd-9571532ebf8d">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>queryResult</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="164c1341-629b-40bb-b5b8-ff57cfa5736c">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>7b4c5c2d-35d1-4d80-9d08-8d82f68642ff</refId>
+          </destination>
+          <source>
+            <refId>84c74b04-8f45-4cf5-8cd7-cb0d8fa8e0dd</refId>
+          </source>
+          <positions>
+            <point>
+              <x>440.0</x>
+              <y>94.0</y>
+            </point>
+            <point>
+              <x>620.0</x>
+              <y>124.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>ddd79f22-8b1e-4605-88d5-d912bb2da2b9</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="24bc0472-4b5d-42c6-b69f-533980ae51b9">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>Z_NUMBER</contextKey>
+          <expression id="c9e041a3-bcdf-4285-9a17-4884fe1e873b">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="b6715bb1-995a-4bfa-a528-f29999701a21">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="a0fd6e7e-35d1-4de4-8879-f51d7aab9fde">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>0</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="9ff8cf68-3b8e-4f2b-a5b5-88232bc6ea64">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="39c24a68-977b-4ad5-81f0-996eac5c14e7">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>LOAN_MATURITY_DATE</contextKey>
+          <expression id="acf9f74f-2770-4bc5-a1fa-d6b25f5c32ca">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="193da14a-88a2-476f-8813-3c162595c882">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="1148ce52-e00f-45e6-86d3-71b0d30da6e1">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>1</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="9d03a855-cb20-4d48-b3f5-2e2e7cac27d0">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="e028d960-ca7a-4a7e-a6e5-36cc28f471de">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>UDC_N77</contextKey>
+          <expression id="8bc167a1-6007-4e24-adf5-584a8d736f08">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="61b5cc4f-7b8c-4c68-ac01-4494425af963">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="a11f2a88-a810-4a1d-980b-9ac885544e2d">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>2</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="a13ab823-339d-451f-bbac-cd35f0e75734">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="3043dd8c-ea55-4654-aefa-d972493b8266">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>PROD_DESCRIPTION</contextKey>
+          <expression id="4e9de8c7-7895-4812-b572-8aee22fc229d">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="216d97c8-16a8-462b-998a-c2b5ce192324">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="834f48a9-ae1d-4953-91d1-73aeb87e94c5">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>3</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="08b725bb-ddc3-4dfe-a104-cedf3ce8756c">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="3d2b5fc9-6b19-4c13-903d-b7b90f3449fc">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>PRODUCT_CD</contextKey>
+          <expression id="d1fb3cf4-d679-4a11-adaa-9ce08e620046">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="77a5d664-6294-4697-8cc1-f43bf9edc6d7">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="1958da80-d19f-466e-b315-124fb33b8a8a">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>4</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="86b660ca-aa00-4c35-84c1-11fdcc02437c">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="9fc3186b-b88a-4407-ae4a-7d0039101ed5">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>PAYMENT_TYPE</contextKey>
+          <expression id="ac6581d1-aaa1-458a-9953-ceead53b3cfd">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="7951ff80-c0e6-4611-a55e-898f8bcbfe9e">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="3b582c9d-4471-4d44-b20b-2e1e7b28364b">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>5</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="34c332e6-0151-47cd-ac9d-025282bf7f8e">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="7a7a8931-5542-417c-9d2b-e09304db3778">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>ARREARS_AMT</contextKey>
+          <expression id="c5ebe010-e8f6-43b6-b667-613bca0172dd">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="6412151b-f1dd-4f84-b384-839dcc351bcc">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="bf51501a-93e6-441f-a7a2-630ff1d4cbfc">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>6</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="7fca75de-5233-4f4f-bee6-0de0f899e266">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="93106f27-1ebe-489a-b90b-97a1e743e570">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>NEXT_REPAYMENT_DATE</contextKey>
+          <expression id="a753ba8b-915f-4c0f-b0d1-b78408c198aa">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="6b1af155-d199-4ff9-8d44-93550934ee5b">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="b19cd61c-8709-4f70-a73f-cc521e7d2c6f">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>7</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="bbb1f7b8-6054-47c5-a1b3-47224b9502bc">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="4afecf89-1f93-4654-bc8b-522ebf353bc6">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>LOAN_START_DATE</contextKey>
+          <expression id="57d43ed9-9428-4b9c-a7e7-b6090a3d5da2">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="fb7bfc11-e3e2-4592-8579-36c0c60b43cb">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="c1606219-a9ea-4af0-ad65-c8746e26aa62">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>8</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="9296b399-f029-4482-86a7-1087dd4233a0">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="852c063b-5615-4fe6-8dbc-3bb01c156c0f">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>FIXED</contextKey>
+          <expression id="27901e3f-1c59-4b50-a905-cc56f8b6505a">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="d7fbd3cd-3080-48d1-9a80-5b0fef75cc29">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="c6c5681a-aeb7-4027-9df8-660f7a5498e5">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>9</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="9b63718f-f949-4454-9dba-c76ab2471336">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="e0287f7d-6dbd-41bd-96c8-ce8efa5a3b12">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>FIXED_END_DATE</contextKey>
+          <expression id="b552484d-dcfe-4700-980a-054e7b34ff2e">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="0e825b9e-1acf-41b8-8d61-f58a543dbf97">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="db930d53-258e-4a75-8c91-dd2e4b06c694">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>10</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="bc9218ff-040e-45b4-adaf-65f0ddcc59c3">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="d3eeab20-e9d9-4b44-a8e3-74569bdf0fc8">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>CONCESSION_CODE</contextKey>
+          <expression id="02051cc4-ae13-4d30-bd86-8028ab222b5f">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="4ee514f9-ae57-40df-a991-5890b4c22dcb">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="c1ee2bc7-cab3-447f-871a-5e0025615683">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>11</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="9dd25e21-cfe4-4cb0-9c28-0a0730cd3489">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="73482a25-87ef-4422-9139-33ea4c655d92">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>ORIGINAL_LVR</contextKey>
+          <expression id="bcecbc69-b6ae-4a26-9a14-bf1dbc50fa37">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="9c418657-4961-4b6c-96c3-eaaf72235a70">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="227b78e3-3df1-45a1-b4d2-e8b80022d257">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>12</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="53171f78-f199-471c-a24f-a252a8c5931b">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="d66afe18-ebf1-4a21-986a-626b07f62890">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>CURRENT_LVR</contextKey>
+          <expression id="aede7010-5c69-4966-a890-9cb3a723d174">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="e4e36f00-0cce-43dc-942d-989a7d0db118">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="6299372d-a436-43de-a82a-0f265f63d425">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>13</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="83435e25-a5b8-483d-958a-7d1af3f0dbb0">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="ce730f3a-e2b3-471f-be77-5a1a686cf4f7">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>PROG_DRAW</contextKey>
+          <expression id="daa7e446-5741-4fda-a95e-4066534f5d67">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="7aab35cf-f725-4fda-8a07-21484b900d84">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="247d13be-dacb-4429-b8c2-6cc61f5cb31a">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>14</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="8e58ae81-4611-43fe-9f67-0e86aeb6b18b">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="025776c4-a257-47f2-96d9-b7e99beb4220">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>GUARANTOR_FLAG</contextKey>
+          <expression id="6929b45c-d4ab-4253-a14a-66db2ae6ab53">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="b7110046-9774-41b8-9071-73acda25464d">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="3ede6768-3d22-4e7a-aab7-60ba8a7bd5c2">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>15</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="9b46fc9e-8024-45aa-afd3-f191ba983560">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="bd74eaa5-5f49-4362-b556-fdb6b5bd07c6">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>EXCESS_FUNDS_AMT</contextKey>
+          <expression id="c00e5dd3-d8fb-46cb-aec8-a547fa8ad8ce">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="e2387ea6-5272-4f70-8bbf-df36aac1e136">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="3653632c-72f4-48a1-89c0-3b3f8be427ae">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>16</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="c015363a-1be2-4cfb-8240-7ef7b0545e9f">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="257f651e-19d5-4184-8484-602f368937c0">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>REDRAW_FLAG</contextKey>
+          <expression id="25a61746-db91-408b-a13b-0ee29d1b0df5">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="19552799-7144-4531-bef9-0ea91ba258d9">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="8e5aa786-5734-4da0-842d-4b3770c14475">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>17</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="edf6a10d-ed22-4433-a190-c57acb6cf29c">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="d4d45296-fca3-4106-8815-e0fc63554dc1">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>CURRENT_LOAN_LIMIT</contextKey>
+          <expression id="e248be4d-09fd-48b6-90cb-6fa6f8eb9ec8">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="116e0a81-b885-46f4-8776-e74b29c98e4f">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="ad265f63-95c3-49cc-a42b-c1740a2d5e7f">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>18</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="cae85494-1ae2-4147-86cb-9c00f0ec4794">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="8fd62421-c265-4d90-8923-69a323a5c740">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>CURRENT_LOAN_BAL</contextKey>
+          <expression id="3054faa8-59a0-45a0-8427-a18d6354718f">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="111e85d1-4455-4c7b-ad22-2d207c4b2ea8">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="2bd41a29-99e9-40a8-bcfe-761e594bec7d">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>19</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="2d8323fd-a8ac-4795-af91-e4c4b5fbd7f9">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="36943c56-e9d6-49d1-98d0-094e64a14630">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>ORIGINAL_LOAN_TERM</contextKey>
+          <expression id="26516240-6de6-4f59-ae58-b145583a4740">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="123ad447-9c74-4e2d-aebf-ef4b6b83d7fc">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="f365b87e-b325-4155-93bf-31226546bb99">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>20</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="8a99163d-505d-40b6-995b-023b9907a019">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="a743d77d-acca-4705-a2e9-312b1ea22d19">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>ORIG_IO_DURATION</contextKey>
+          <expression id="a1802a7d-510d-42da-a745-32a58d262255">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="a8f14945-2cbd-4add-95b7-a6fdf5285102">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="df3d67aa-8c07-4388-8178-9c958b1902f1">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>21</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="770f1190-05b1-43c7-b08c-d64e242e6705">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="8a780d30-42d4-4b03-890a-521dbfb1648d">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>IO_EXPIRY_DATE</contextKey>
+          <expression id="c6e777d1-b5c0-4462-8238-e3531b916cf5">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="d9fb0af2-594c-4053-bf1a-0848e66e06bf">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="47898f51-23d7-4ec3-83de-6534dda7e618">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>22</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="85a73052-c6fd-4db1-9bac-ddd57654ac7c">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="be1dae44-bec2-4a7f-9f3d-e1f4f554733c">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>UDC_B60</contextKey>
+          <expression id="82bad584-7408-4fa0-9fe6-3f96b99653eb">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="996978f1-6ee1-4a9d-a100-53d303e1b18b">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="7ac1d8c0-2dd7-4ba2-8fa9-8b28957b5f56">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>23</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="d41084f2-ab18-4126-9664-763ac9711312">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="bc33e510-bc12-40bb-b93c-36882862d9f0">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>CONDITION_CODE_98</contextKey>
+          <expression id="424b2474-e36a-4546-887c-425e19e75a65">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="7eb80292-5048-44b2-8ca2-99b58b398a2c">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="e037b71a-5255-46e6-859b-4290f978044b">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>24</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="5f3f52df-8fa3-46eb-9fcf-c0711d9aab49">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="206f57cb-c481-4970-9f0f-9fc26f69e2b6">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>TRAN</contextKey>
+          <expression id="944f4bc5-a6e1-45b5-9a3d-897a5be7672b">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="803192f2-4958-4b29-943e-4cc9bb9a0816">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="505c52aa-e24c-456a-b059-c2973d038214">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>25</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="62b13e1e-40d8-416f-8792-d2ef81955913">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="84c3b2d9-1e5e-46e6-9099-8abb8864e87c">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>REQ_REPAYMENT_AMT</contextKey>
+          <expression id="8f867235-080c-4795-b87d-37e4c88690d7">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="878c2dcb-8463-498f-aaf5-785016f06174">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="19505364-6eb5-4441-9a76-6c8f367f6573">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>26</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="f1c20cc3-fc19-4d15-8b5b-4cc6218719d6">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="df611e8c-e88d-4bb5-8878-43034699eebf">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>DD_FREQUENCY</contextKey>
+          <expression id="32d2a3b5-9e3e-47dc-aa3b-8abe9785188e">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="3dc0e80c-c7cd-4497-a2e9-c3dd9ce3fcf8">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="52fcec31-8bbf-483c-9667-55d1536dd01c">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>27</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="7ebe941d-3e4e-48c3-a7d3-067d5bf2f1da">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="f6642332-0ddc-4bbe-944d-62468e842a77">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>CURRENT_LOAN_TERM</contextKey>
+          <expression id="3b36fd52-4956-4bf5-8f43-d22a174e77c2">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="f665197d-14c3-4c15-94ed-8899cc78ec33">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="d0cd2029-755b-4c9b-b575-e430611f7594">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>28</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="5531b6cb-88ca-4ff6-be12-f1cc489d05e8">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="a290537f-701f-4868-bda8-49ba6fe5ed4b">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>ACTIVE_DISCOUNT</contextKey>
+          <expression id="a93f4b13-b6c4-4a64-a491-4b7988a5ffaf">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="2e6838a2-a1b1-40d3-a45f-9d57f52a6c53">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="99efe220-6bda-4237-b814-2165c17310cf">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>29</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="7748f392-ad72-4892-9e9a-6c2c58663e53">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="939e4189-bfca-46a8-b82d-fd629779cf93">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>PACKAGE_TYPE</contextKey>
+          <expression id="ae494ae0-91d9-4755-b068-04651206f74b">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="7b733f6d-52d6-4912-929e-04789bc6b7a8">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="738747eb-fa54-4e5d-8ab2-e97fac11e0bf">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>30</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="91790cdf-0810-4a84-8dd3-0ed7b7f0a0b8">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="5a932c99-b406-40a4-a891-404802e7ff49">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>DD_EXIST</contextKey>
+          <expression id="33a5f570-90e3-4c7b-93c5-ea15d439bfbe">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="4465c3d9-2c1d-46ae-98eb-574a9acbb72a">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="79fe2ff7-072d-4b0d-8f9d-a4bf3678f894">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>31</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="cb8b0911-fe58-480a-a9a2-9651c07df30c">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="e6e9ef05-de79-4d6c-87f6-3008b6f3f1de">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>FIRST_NAME_1</contextKey>
+          <expression id="09c4b514-b590-4435-bcbe-47cebe100cec">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="74bd68b7-882f-4ede-b68e-dc8595894e55">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="e670f49b-3b14-4e90-80ec-45bec3c57a67">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>32</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="f3280376-5077-42e5-9b33-c0be312c59e2">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="1c082d8b-22f8-4b6e-ba9b-6b2b5313cf0a">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>LAST_NAME_1</contextKey>
+          <expression id="17d0db23-e6f5-4d16-af87-07e37a208a4f">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="aa0d7a74-3ceb-4553-b4e8-162c03fc95db">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="32eccb57-6128-4b9d-8a01-4e1778e95734">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>33</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="917f16f9-5d33-4dc2-a9b9-c66bcaf81ce3">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="8ba7f4a1-8541-4965-8898-95565cf0cb19">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>NEXT_DRAFT_DATE</contextKey>
+          <expression id="cccd18a8-186a-48b5-ac1a-88096a12b3c8">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="d226cc58-4612-4370-8567-78c43add2629">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="c425969f-7835-46a2-881c-645427ee87cf">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>34</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="99121488-5dcc-479f-ab2d-fdf22bcea291">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="6f898095-2040-46aa-9d42-7196c568f1f8">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>PCON</contextKey>
+          <expression id="bc462344-3cba-4396-b776-136469e027e4">
+            <annotation></annotation>
+            <name>Input: queryResult</name>
+            <fieldName>queryResult</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <replaceAllFilter id="36599972-b43b-4d77-a5ab-6c0c817bb566">
+                <annotation></annotation>
+                <name>Replace</name>
+                <ignoreCase>false</ignoreCase>
+                <searchString>;/;</searchString>
+                <replaceString>
+</replaceString>
+                <replaceType>ALL</replaceType>
+              </replaceAllFilter>
+              <selectLineFilter id="b062da88-71c8-43c8-b066-995a4253e317">
+                <annotation></annotation>
+                <name>Select Line</name>
+                <text>35</text>
+                <type>LINE_NUMBER_(STARTING_FROM_0)</type>
+                <autoSelectLineEnding>true</autoSelectLineEnding>
+                <windowsLineEnding>false</windowsLineEnding>
+                <unixLineEnding>false</unixLineEnding>
+              </selectLineFilter>
+              <stripWhitespaceFilter id="60316d4e-879c-42fe-85bd-cca323734603">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <returnStep id="7b4c5c2d-35d1-4d80-9d08-8d82f68642ff">
+      <annotation></annotation>
+      <name>Resolved : success</name>
+      <bounds>
+        <x>470.0</x>
+        <y>0.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="e1606234-a81d-4717-b7c2-7ae1c7f7457b">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>7b4c5c2d-35d1-4d80-9d08-8d82f68642ff</refId>
+          </destination>
+          <source>
+            <refId>7b4c5c2d-35d1-4d80-9d08-8d82f68642ff</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>RESOLVED</returnStepType>
+      <assignments/>
+    </returnStep>
+    <returnStep id="fe8cc599-63fd-4968-8546-9280a41ec716">
+      <annotation></annotation>
+      <name>No Action Taken : unknown</name>
+      <bounds>
+        <x>140.0</x>
+        <y>180.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="e06008bb-febc-4ead-8bdb-bf4bd1d7c44c">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>unknown</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>fe8cc599-63fd-4968-8546-9280a41ec716</refId>
+          </destination>
+          <source>
+            <refId>fe8cc599-63fd-4968-8546-9280a41ec716</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>NO_ACTION_TAKEN</returnStepType>
+      <assignments/>
+    </returnStep>
+  </steps>
+  <startSteps>8761c030-55f1-4244-8994-4ab0ce265b30</startSteps>
+</flow>
