@@ -1,0 +1,1352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow id="48c4f481-4b98-4dee-879f-a79cd6c2f184">
+  <descriptionCdata><![CDATA[48c4f481-4b98-4dee-879f-a79cd6c2f184.1a25ebb5-df7f-44f2-a0c9-f64bbff8f9ef.description=Edits an XML document.\n\nInputs\:\n    xml - The XML (in the form of a String).\n    filePath - Absolute or remote path of the XML file.\n    action - The edit action to take place.\nValid values\: delete, insert, append, subnode, move, rename, update.\n    xpath1 - The XPath Query that is wanted to be run. The changes take place at the resulting elements.\n    xpath2 - The XPath Query that is wanted to be run. For the move action the results of xpath1 are moved to the results of xpath2.\n    value - The new value.\nExamples\: <newNode>newNodeValue</newNode> , <newNode newAttribute\="newAttributeValue">newNodeValue</newNode>, new value.\t\n    type - Defines on what should the changes take effect \: the element, the value of the element or the attributes of the element.\nValid values\: elem, text, attr\n    name - The name of the attribute in case the selected type is 'attr' .\n    parsingFeatures - The list of XML parsing features separated by new line (CRLF). The feature name - value must be separated by empty space. Setting specific features this field could be used to avoid XML security issues like "XML Entity Expansion injection" and "XML External Entity injection". To avoid aforementioned security issues we strongly recommend to set this input to the following values\: \nhttp\://apache.org/xml/features/disallow-doctype-decl true\nhttp\://xml.org/sax/features/external-general-entities false\nhttp\://xml.org/sax/features/external-parameter-entities false\nWhen the "http\://apache.org/xml/features/disallow-doctype-decl" feature is set to "true" the parser will throw a FATAL ERROR if the incoming document contains a DOCTYPE declaration.  \nWhen the "http\://xml.org/sax/features/external-general-entities" feature is set to "false" the parser will not include external general entities. \nWhen the "http\://xml.org/sax/features/external-parameter-entities" feature is set to "false" the parser will not include external parameter entities or the external DTD subset. \nIf any of the validations fails, the operation will fail with an error message describing the problem. \nDefault value\:\nhttp\://apache.org/xml/features/disallow-doctype-decl true\nhttp\://xml.org/sax/features/external-general-entities false\nhttp\://xml.org/sax/features/external-parameter-entities false\n\nResults\:\n    returnResult - This is the primary output. The edited XML.\n    returnCode - 0 for success; -1 for failure.\n    exception - The exception message in case one occured.\n\t\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation completed unsuccessfully.\n\nNotes\: \n1. For the delete action the following inputs are required\: xml or filePath, xpath1, type and in case type is 'attr' then name is also required (representing the attributes name). Delete action modifies the XML only for type 'elem' or attr'.\n2. For the insert action the following inputs are required\: xml or filePath, xpath1, value, type and in case type is 'attr' then name is also required (representing the attributes name). For type 'elem' insert adds the node before the resulting nodes of the XPath. For type 'text' insert adds the text before the text value of resulting nodes of the XPath.  \n3. For the append action the following inputs are required\: xml or filePath, xpath1, value, type and in case type is 'attr' then name is also required (representing the attributes name). For type 'elem' append adds the node after the resulting nodes of the XPath. For type 'text' append adds the text after the text value of resulting nodes of the XPath.\n4. For insert and append attributes the order is the default alphabetical.   \n5. For the subnode action the following inputs are required\: xml or filePath, xpath1 and value.\n6. For the move action the following inputs are required\: xml or filePath, xpath1 and xpath2. Move  action  modifies the XML only for type 'elem'.\n7. For the rename action the following inputs are required\: xml or filePath, xpath1, value, type and in case type is 'attr' then name is also required (representing the attributes name). Rename action  modifies the XML only for type 'elem' or attr'.\n8. For the update action the following inputs are required\: xml or filePath, xpath1, value, type and in case type is 'attr' then name is also required (representing the attributes name).\n9. The World Wide Web Consortium (W3C) organization provides the XPath specification (http\://www.w3.org).\n10. XML using default namespace is also supported by this operation.\n11. An element from the default namespace can be retrieved using a location path.\n\nExamples\:\n1. The following is a valid xpath example for working with a XML that uses default namespace. This example searches all "td" elements from the default namespace\:\n    xml\: <table xmlns\="http\://www.w3.org/TR/html4/">\n                <tr>\n                    <td>Apples</td>\n                    <td>Bananas</td>\n                 </tr>\n            </table>\n    xpath1\: //*[namespace-uri()\="http\://www.w3.org/TR/html4/" and name()\="td"]\n</pre>\n
+48c4f481-4b98-4dee-879f-a79cd6c2f184.857d74ee-a24c-493f-a4b2-5d552eb2325b.description=Edits an XML document.\n\nInputs\:\n    xml - The XML (in the form of a String).\n    filePath - Absolute or remote path of the XML file.\n    action - The edit action to take place.\nValid values\: delete, insert, append, subnode, move, rename, update.\n    xpath1 - The XPath Query that is wanted to be run. The changes take place at the resulting elements.\n    xpath2 - The XPath Query that is wanted to be run. For the move action the results of xpath1 are moved to the results of xpath2.\n    value - The new value.\nExamples\: <newNode>newNodeValue</newNode> , <newNode newAttribute\="newAttributeValue">newNodeValue</newNode>, new value.\t\n    type - Defines on what should the changes take effect \: the element, the value of the element or the attributes of the element.\nValid values\: elem, text, attr\n    name - The name of the attribute in case the selected type is 'attr' .\n    parsingFeatures - The list of XML parsing features separated by new line (CRLF). The feature name - value must be separated by empty space. Setting specific features this field could be used to avoid XML security issues like "XML Entity Expansion injection" and "XML External Entity injection". To avoid aforementioned security issues we strongly recommend to set this input to the following values\: \nhttp\://apache.org/xml/features/disallow-doctype-decl true\nhttp\://xml.org/sax/features/external-general-entities false\nhttp\://xml.org/sax/features/external-parameter-entities false\nWhen the "http\://apache.org/xml/features/disallow-doctype-decl" feature is set to "true" the parser will throw a FATAL ERROR if the incoming document contains a DOCTYPE declaration.  \nWhen the "http\://xml.org/sax/features/external-general-entities" feature is set to "false" the parser will not include external general entities. \nWhen the "http\://xml.org/sax/features/external-parameter-entities" feature is set to "false" the parser will not include external parameter entities or the external DTD subset. \nIf any of the validations fails, the operation will fail with an error message describing the problem. \nDefault value\:\nhttp\://apache.org/xml/features/disallow-doctype-decl true\nhttp\://xml.org/sax/features/external-general-entities false\nhttp\://xml.org/sax/features/external-parameter-entities false\n\nResults\:\n    returnResult - This is the primary output. The edited XML.\n    returnCode - 0 for success; -1 for failure.\n    exception - The exception message in case one occured.\n\t\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation completed unsuccessfully.\n\nNotes\: \n1. For the delete action the following inputs are required\: xml or filePath, xpath1, type and in case type is 'attr' then name is also required (representing the attributes name). Delete action modifies the XML only for type 'elem' or attr'.\n2. For the insert action the following inputs are required\: xml or filePath, xpath1, value, type and in case type is 'attr' then name is also required (representing the attributes name). For type 'elem' insert adds the node before the resulting nodes of the XPath. For type 'text' insert adds the text before the text value of resulting nodes of the XPath.  \n3. For the append action the following inputs are required\: xml or filePath, xpath1, value, type and in case type is 'attr' then name is also required (representing the attributes name). For type 'elem' append adds the node after the resulting nodes of the XPath. For type 'text' append adds the text after the text value of resulting nodes of the XPath.\n4. For insert and append attributes the order is the default alphabetical.   \n5. For the subnode action the following inputs are required\: xml or filePath, xpath1 and value.\n6. For the move action the following inputs are required\: xml or filePath, xpath1 and xpath2. Move  action  modifies the XML only for type 'elem'.\n7. For the rename action the following inputs are required\: xml or filePath, xpath1, value, type and in case type is 'attr' then name is also required (representing the attributes name). Rename action  modifies the XML only for type 'elem' or attr'.\n8. For the update action the following inputs are required\: xml or filePath, xpath1, value, type and in case type is 'attr' then name is also required (representing the attributes name).\n9. The World Wide Web Consortium (W3C) organization provides the XPath specification (http\://www.w3.org).\n10. XML using default namespace is also supported by this operation.\n11. An element from the default namespace can be retrieved using a location path.\n\nExamples\:\n1. The following is a valid xpath example for working with a XML that uses default namespace. This example searches all "td" elements from the default namespace\:\n    xml\: <table xmlns\="http\://www.w3.org/TR/html4/">\n                <tr>\n                    <td>Apples</td>\n                    <td>Bananas</td>\n                 </tr>\n            </table>\n    xpath1\: //*[namespace-uri()\="http\://www.w3.org/TR/html4/" and name()\="td"]\n</pre>\n
+48c4f481-4b98-4dee-879f-a79cd6c2f184.aed2c872-08b2-49aa-8af2-139f5de421a1.description=Edits an XML document.\n\nInputs\:\n    xml - The XML (in the form of a String).\n    filePath - Absolute or remote path of the XML file.\n    action - The edit action to take place.\nValid values\: delete, insert, append, subnode, move, rename, update.\n    xpath1 - The XPath Query that is wanted to be run. The changes take place at the resulting elements.\n    xpath2 - The XPath Query that is wanted to be run. For the move action the results of xpath1 are moved to the results of xpath2.\n    value - The new value.\nExamples\: <newNode>newNodeValue</newNode> , <newNode newAttribute\="newAttributeValue">newNodeValue</newNode>, new value.\t\n    type - Defines on what should the changes take effect \: the element, the value of the element or the attributes of the element.\nValid values\: elem, text, attr\n    name - The name of the attribute in case the selected type is 'attr' .\n    parsingFeatures - The list of XML parsing features separated by new line (CRLF). The feature name - value must be separated by empty space. Setting specific features this field could be used to avoid XML security issues like "XML Entity Expansion injection" and "XML External Entity injection". To avoid aforementioned security issues we strongly recommend to set this input to the following values\: \nhttp\://apache.org/xml/features/disallow-doctype-decl true\nhttp\://xml.org/sax/features/external-general-entities false\nhttp\://xml.org/sax/features/external-parameter-entities false\nWhen the "http\://apache.org/xml/features/disallow-doctype-decl" feature is set to "true" the parser will throw a FATAL ERROR if the incoming document contains a DOCTYPE declaration.  \nWhen the "http\://xml.org/sax/features/external-general-entities" feature is set to "false" the parser will not include external general entities. \nWhen the "http\://xml.org/sax/features/external-parameter-entities" feature is set to "false" the parser will not include external parameter entities or the external DTD subset. \nIf any of the validations fails, the operation will fail with an error message describing the problem. \nDefault value\:\nhttp\://apache.org/xml/features/disallow-doctype-decl true\nhttp\://xml.org/sax/features/external-general-entities false\nhttp\://xml.org/sax/features/external-parameter-entities false\n\nResults\:\n    returnResult - This is the primary output. The edited XML.\n    returnCode - 0 for success; -1 for failure.\n    exception - The exception message in case one occured.\n\t\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation completed unsuccessfully.\n\nNotes\: \n1. For the delete action the following inputs are required\: xml or filePath, xpath1, type and in case type is 'attr' then name is also required (representing the attributes name). Delete action modifies the XML only for type 'elem' or attr'.\n2. For the insert action the following inputs are required\: xml or filePath, xpath1, value, type and in case type is 'attr' then name is also required (representing the attributes name). For type 'elem' insert adds the node before the resulting nodes of the XPath. For type 'text' insert adds the text before the text value of resulting nodes of the XPath.  \n3. For the append action the following inputs are required\: xml or filePath, xpath1, value, type and in case type is 'attr' then name is also required (representing the attributes name). For type 'elem' append adds the node after the resulting nodes of the XPath. For type 'text' append adds the text after the text value of resulting nodes of the XPath.\n4. For insert and append attributes the order is the default alphabetical.   \n5. For the subnode action the following inputs are required\: xml or filePath, xpath1 and value.\n6. For the move action the following inputs are required\: xml or filePath, xpath1 and xpath2. Move  action  modifies the XML only for type 'elem'.\n7. For the rename action the following inputs are required\: xml or filePath, xpath1, value, type and in case type is 'attr' then name is also required (representing the attributes name). Rename action  modifies the XML only for type 'elem' or attr'.\n8. For the update action the following inputs are required\: xml or filePath, xpath1, value, type and in case type is 'attr' then name is also required (representing the attributes name).\n9. The World Wide Web Consortium (W3C) organization provides the XPath specification (http\://www.w3.org).\n10. XML using default namespace is also supported by this operation.\n11. An element from the default namespace can be retrieved using a location path.\n\nExamples\:\n1. The following is a valid xpath example for working with a XML that uses default namespace. This example searches all "td" elements from the default namespace\:\n    xml\: <table xmlns\="http\://www.w3.org/TR/html4/">\n                <tr>\n                    <td>Apples</td>\n                    <td>Bananas</td>\n                 </tr>\n            </table>\n    xpath1\: //*[namespace-uri()\="http\://www.w3.org/TR/html4/" and name()\="td"]\n</pre>\n
+48c4f481-4b98-4dee-879f-a79cd6c2f184.c7e93244-e666-42f9-a086-2f9a7c9bb903.description=Edits an XML document.\n\nInputs\:\n    xml - The XML (in the form of a String).\n    filePath - Absolute or remote path of the XML file.\n    action - The edit action to take place.\nValid values\: delete, insert, append, subnode, move, rename, update.\n    xpath1 - The XPath Query that is wanted to be run. The changes take place at the resulting elements.\n    xpath2 - The XPath Query that is wanted to be run. For the move action the results of xpath1 are moved to the results of xpath2.\n    value - The new value.\nExamples\: <newNode>newNodeValue</newNode> , <newNode newAttribute\="newAttributeValue">newNodeValue</newNode>, new value.\t\n    type - Defines on what should the changes take effect \: the element, the value of the element or the attributes of the element.\nValid values\: elem, text, attr\n    name - The name of the attribute in case the selected type is 'attr' .\n    parsingFeatures - The list of XML parsing features separated by new line (CRLF). The feature name - value must be separated by empty space. Setting specific features this field could be used to avoid XML security issues like "XML Entity Expansion injection" and "XML External Entity injection". To avoid aforementioned security issues we strongly recommend to set this input to the following values\: \nhttp\://apache.org/xml/features/disallow-doctype-decl true\nhttp\://xml.org/sax/features/external-general-entities false\nhttp\://xml.org/sax/features/external-parameter-entities false\nWhen the "http\://apache.org/xml/features/disallow-doctype-decl" feature is set to "true" the parser will throw a FATAL ERROR if the incoming document contains a DOCTYPE declaration.  \nWhen the "http\://xml.org/sax/features/external-general-entities" feature is set to "false" the parser will not include external general entities. \nWhen the "http\://xml.org/sax/features/external-parameter-entities" feature is set to "false" the parser will not include external parameter entities or the external DTD subset. \nIf any of the validations fails, the operation will fail with an error message describing the problem. \nDefault value\:\nhttp\://apache.org/xml/features/disallow-doctype-decl true\nhttp\://xml.org/sax/features/external-general-entities false\nhttp\://xml.org/sax/features/external-parameter-entities false\n\nResults\:\n    returnResult - This is the primary output. The edited XML.\n    returnCode - 0 for success; -1 for failure.\n    exception - The exception message in case one occured.\n\t\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation completed unsuccessfully.\n\nNotes\: \n1. For the delete action the following inputs are required\: xml or filePath, xpath1, type and in case type is 'attr' then name is also required (representing the attributes name). Delete action modifies the XML only for type 'elem' or attr'.\n2. For the insert action the following inputs are required\: xml or filePath, xpath1, value, type and in case type is 'attr' then name is also required (representing the attributes name). For type 'elem' insert adds the node before the resulting nodes of the XPath. For type 'text' insert adds the text before the text value of resulting nodes of the XPath.  \n3. For the append action the following inputs are required\: xml or filePath, xpath1, value, type and in case type is 'attr' then name is also required (representing the attributes name). For type 'elem' append adds the node after the resulting nodes of the XPath. For type 'text' append adds the text after the text value of resulting nodes of the XPath.\n4. For insert and append attributes the order is the default alphabetical.   \n5. For the subnode action the following inputs are required\: xml or filePath, xpath1 and value.\n6. For the move action the following inputs are required\: xml or filePath, xpath1 and xpath2. Move  action  modifies the XML only for type 'elem'.\n7. For the rename action the following inputs are required\: xml or filePath, xpath1, value, type and in case type is 'attr' then name is also required (representing the attributes name). Rename action  modifies the XML only for type 'elem' or attr'.\n8. For the update action the following inputs are required\: xml or filePath, xpath1, value, type and in case type is 'attr' then name is also required (representing the attributes name).\n9. The World Wide Web Consortium (W3C) organization provides the XPath specification (http\://www.w3.org).\n10. XML using default namespace is also supported by this operation.\n11. An element from the default namespace can be retrieved using a location path.\n\nExamples\:\n1. The following is a valid xpath example for working with a XML that uses default namespace. This example searches all "td" elements from the default namespace\:\n    xml\: <table xmlns\="http\://www.w3.org/TR/html4/">\n                <tr>\n                    <td>Apples</td>\n                    <td>Bananas</td>\n                 </tr>\n            </table>\n    xpath1\: //*[namespace-uri()\="http\://www.w3.org/TR/html4/" and name()\="td"]\n</pre>\n
+48c4f481-4b98-4dee-879f-a79cd6c2f184.f20abd42-11c6-4ebc-80ae-f3ea161701e5.description=<pre>\nThis operation does not do anything. It can be used to filter flow variables by defining them as inputs and filtering them in the Results tab.\n\nInputs\:\n    field1 \u2013 An optional input that can be used for filtering flow variables.\n    field2 \u2013 An optional input that can be used for filtering flow variables.\n    field3 \u2013 An optional input that can be used for filtering flow variables.\n    field4 \u2013 An optional input that can be used for filtering flow variables.\n\nResults\:\n    returnResult - This is the primary output. It contains the value of  "field1" as it was specified at input or when filtered. \n\nResponses\:\n    success - The operation completed as stated in the description.\n</pre>
+]]></descriptionCdata>
+  <annotation></annotation>
+  <name>Generate Runs XML</name>
+  <categories/>
+  <inputs>
+    <staticBinding id="eb78c4ed-d62c-47a7-b2e7-d2230bf32d74">
+      <annotation></annotation>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>runsXML</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value></value>
+      <record>false</record>
+    </staticBinding>
+    <staticBinding id="41752da1-4087-477c-98d6-fb15063b0941">
+      <annotation></annotation>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>flowPath</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value></value>
+      <record>false</record>
+    </staticBinding>
+    <staticBinding id="6c98111e-fc49-4620-9baa-c4a845d7752b">
+      <annotation></annotation>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>runName</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value></value>
+      <record>false</record>
+    </staticBinding>
+    <staticBinding id="6252ef1b-1704-423d-91bc-8a5a80b12d11">
+      <annotation></annotation>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>input</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value></value>
+      <record>false</record>
+    </staticBinding>
+    <staticBinding id="f9e0e16b-b6b9-40d9-b814-dbb7816ceabc">
+      <annotation></annotation>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>value</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value></value>
+      <record>false</record>
+    </staticBinding>
+  </inputs>
+  <possibleResponses>
+    <opResponse id="dd457295-97b1-461d-a5ec-9b0360647648">
+      <annotation></annotation>
+      <name>failure</name>
+      <isDefault>false</isDefault>
+      <onFailure>true</onFailure>
+      <type>ERROR</type>
+      <matchRules/>
+    </opResponse>
+    <opResponse id="3d4d08d2-4041-4911-85ce-f2adf8ce6c3c">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>true</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules/>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions>
+    <expression id="5bcc0735-7980-40e1-8f03-1c3aa066a413">
+      <annotation></annotation>
+      <name>runsXML</name>
+      <fieldName>runsXML</fieldName>
+      <sourceType>RAWRESULT</sourceType>
+      <filters/>
+    </expression>
+  </availableResultExpressions>
+  <resultExpression id="dd2cde67-a940-44f4-951f-e1a6734779bb">
+    <annotation></annotation>
+    <name>FailureMessage</name>
+    <fieldName>FailureMessage</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="1a2d3fa2-1dd2-4f6c-bac4-0d461a96fb23">
+    <baseIcon>flow.png</baseIcon>
+    <basePath>System</basePath>
+    <readOnly>false</readOnly>
+    <layers/>
+  </iconSpec>
+  <callouts/>
+  <checkPointFlow>true</checkPointFlow>
+  <compatibleRuntimeContext>false</compatibleRuntimeContext>
+  <historyCheckPointFlow>true</historyCheckPointFlow>
+  <steps>
+    <step id="f20abd42-11c6-4ebc-80ae-f3ea161701e5">
+      <annotation>48c4f481-4b98-4dee-879f-a79cd6c2f184.f20abd42-11c6-4ebc-80ae-f3ea161701e5.description</annotation>
+      <name>Trim Whitespaces</name>
+      <bounds>
+        <x>63.0</x>
+        <y>118.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="947411ac-5c5d-4959-a80f-6cddbe218820">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>flowPath</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="94714c04-a75d-4f9b-a0ba-4462eb25a3c2">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>runName</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="7439c4e2-208b-4e55-a6e1-2081c9c5318d">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>input</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="915fb8fe-23b7-4873-a0e0-3d4cdbaf92b9">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>value</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="6cc1bf49-3236-4ebf-bd66-d40ce27f3a3b">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>857d74ee-a24c-493f-a4b2-5d552eb2325b</refId>
+          </destination>
+          <source>
+            <refId>f20abd42-11c6-4ebc-80ae-f3ea161701e5</refId>
+          </source>
+          <positions>
+            <point>
+              <x>113.0</x>
+              <y>152.0</y>
+            </point>
+            <point>
+              <x>243.0</x>
+              <y>152.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>ddd79f22-8b1e-4605-88d5-d912bb2da2b9</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="5c6c0ad5-f4b4-480c-b3c4-720a40a23adf">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>flowPath</contextKey>
+          <expression id="f8f47232-b064-47f2-ac49-65b408a86bdd">
+            <annotation></annotation>
+            <name>Input: flowPath</name>
+            <fieldName>flowPath</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <stripWhitespaceFilter id="360532cb-f340-4876-86b6-dfb9be7e946f">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="605ab386-5bf9-465d-8fef-1a05ba2dd129">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>runName</contextKey>
+          <expression id="c9a1853e-1648-4762-88ea-d31d8a4aa1b0">
+            <annotation></annotation>
+            <name>Input: runName</name>
+            <fieldName>runName</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <stripWhitespaceFilter id="b358b4ca-b432-4580-a7f8-444a15eeae40">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="21dc8d75-5a29-4286-8955-5313f5bdcd44">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>input</contextKey>
+          <expression id="69a5c1bc-f89f-4a7a-8e92-555532978a53">
+            <annotation></annotation>
+            <name>Input: input</name>
+            <fieldName>input</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <stripWhitespaceFilter id="00fb854e-6e44-42af-bd78-015a2a4f012e">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="efc796b0-da9b-47d1-95fc-6b7d01a0828e">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>value</contextKey>
+          <expression id="5f03cb6e-2036-426a-ad62-5d37ef4494b9">
+            <annotation></annotation>
+            <name>Input: value</name>
+            <fieldName>value</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <stripWhitespaceFilter id="1c7c4ca2-fa01-4e70-9cb8-b1f486de92ec">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="857d74ee-a24c-493f-a4b2-5d552eb2325b">
+      <annotation>48c4f481-4b98-4dee-879f-a79cd6c2f184.857d74ee-a24c-493f-a4b2-5d552eb2325b.description</annotation>
+      <name>Add Run Name</name>
+      <bounds>
+        <x>193.0</x>
+        <y>118.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="96e899f1-3959-4088-9e11-d024277fc3c5">
+        <baseIcon>document_xml.png</baseIcon>
+        <basePath>Operating System/</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="6282cc21-af34-4767-96e2-9b2a0f0f796b">
+          <annotation></annotation>
+          <fromContextKey>value</fromContextKey>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>xml</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>&lt;run/&gt;</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="55ca4933-8edd-4d63-b37d-bdf26796c7c4">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>filePath</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="5abb4ba3-d17d-4831-9b6b-55465f92d65f">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>action</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>insert</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="2b64d89a-7fb3-44a4-89e1-85a0ef01e78b">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>xpath1</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>/run</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="08c27a9c-cefa-40eb-9733-f6ade9967c54">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>xpath2</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="d311fffe-51bd-4386-aa81-b706e61279bc">
+          <annotation></annotation>
+          <fromContextKey>runName</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>value</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="fd9c02b0-dfc0-48fd-8eec-86aa35f3f294">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>type</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>attr</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="7c9933e1-9a50-4f35-94d7-2f7acd80f11c">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>name</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>name</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="542b2dc2-100b-4e9d-a93b-d793e749c7ef">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>parsingFeatures</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>http://apache.org/xml/features/disallow-doctype-decl true
+http://xml.org/sax/features/external-general-entities false
+http://xml.org/sax/features/external-parameter-entities false</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="29b8c5ee-037b-46fb-9ffb-2533d684a8fa">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>157973de-c825-49f9-af19-0db163fbe953</refId>
+          </destination>
+          <source>
+            <refId>857d74ee-a24c-493f-a4b2-5d552eb2325b</refId>
+          </source>
+          <positions>
+            <point>
+              <x>88.0</x>
+              <y>73.0</y>
+            </point>
+            <point>
+              <x>175.0</x>
+              <y>267.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="e7b3df63-556c-4a0c-8a2a-ca6f6dac5b06">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>c7e93244-e666-42f9-a086-2f9a7c9bb903</refId>
+          </destination>
+          <source>
+            <refId>857d74ee-a24c-493f-a4b2-5d552eb2325b</refId>
+          </source>
+          <positions>
+            <point>
+              <x>180.0</x>
+              <y>151.0</y>
+            </point>
+            <point>
+              <x>310.0</x>
+              <y>151.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>cb35b17f-3f88-42ab-a319-fb10616bb1fe</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="ea130b4f-8668-4ca5-affe-e6176e7220cb">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>runXML</contextKey>
+          <expression id="acec7f1c-a44e-4b61-a732-d6778c29829b">
+            <annotation></annotation>
+            <name>Result Field: returnResult</name>
+            <fieldName>returnResult</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters>
+              <xpathFilter id="f8626ee2-d8cc-4ff6-84f9-dbf6d7d21e9d">
+                <annotation></annotation>
+                <name>XPath Query</name>
+                <xpathQuery>/*</xpathQuery>
+              </xpathFilter>
+              <stripWhitespaceFilter id="ca983ad9-a0aa-4918-84f3-4959f89acd3a">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="aed2c872-08b2-49aa-8af2-139f5de421a1">
+      <annotation>48c4f481-4b98-4dee-879f-a79cd6c2f184.aed2c872-08b2-49aa-8af2-139f5de421a1.description</annotation>
+      <name>Add Run to XML</name>
+      <bounds>
+        <x>583.0</x>
+        <y>118.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="d05f4329-d4ad-49a1-869e-a1b09efa77b9">
+        <baseIcon>document_xml.png</baseIcon>
+        <basePath>Operating System/</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="21204eff-1621-4b82-93e7-d95a20c419b1">
+          <annotation></annotation>
+          <fromContextKey>runsXML</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>xml</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>&lt;runs flow=&quot;${flowPath}&quot;/&gt;</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="f34a785f-c3dc-4306-9ae9-6a13d6a53109">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>filePath</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="e5502838-09f7-46c6-b0a9-c04e06046290">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>action</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>subnode</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="60feda8d-9c32-4f21-b884-588afafd4adc">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>xpath1</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>/runs</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="37498e97-c0fb-4d2d-a12d-f928748505b7">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>xpath2</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="f201d22f-b3f1-4c06-b784-3428d965a631">
+          <annotation></annotation>
+          <fromContextKey>runXML</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>value</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="bcc0af8b-3ad8-44d9-9500-14d97e96d5b3">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>type</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>elem</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="8354ed16-5c37-44b9-9e39-6d7a084f81fa">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>name</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="a4ad45de-4d5a-4c65-8d31-bdad28923ebb">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>parsingFeatures</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>http://apache.org/xml/features/disallow-doctype-decl true
+http://xml.org/sax/features/external-general-entities false
+http://xml.org/sax/features/external-parameter-entities false</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="0c591175-4306-4e7c-971e-06c4e209d135">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>40fe25b9-238e-45c1-935f-8b0a040f7d85</refId>
+          </destination>
+          <source>
+            <refId>aed2c872-08b2-49aa-8af2-139f5de421a1</refId>
+          </source>
+          <positions>
+            <point>
+              <x>175.0</x>
+              <y>137.0</y>
+            </point>
+            <point>
+              <x>305.0</x>
+              <y>137.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="c910041a-aee5-4799-8f72-b6129fb0181c">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>157973de-c825-49f9-af19-0db163fbe953</refId>
+          </destination>
+          <source>
+            <refId>aed2c872-08b2-49aa-8af2-139f5de421a1</refId>
+          </source>
+          <positions>
+            <point>
+              <x>175.0</x>
+              <y>137.0</y>
+            </point>
+            <point>
+              <x>175.0</x>
+              <y>267.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>cb35b17f-3f88-42ab-a319-fb10616bb1fe</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="e960cf50-4c88-4367-9b3e-c1bbc884dc88">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>runsXML</contextKey>
+          <expression id="33b2d51c-cc79-454b-bfb9-6aff126e33d3">
+            <annotation></annotation>
+            <name>Result Field: returnResult</name>
+            <fieldName>returnResult</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <returnStep id="157973de-c825-49f9-af19-0db163fbe953">
+      <annotation></annotation>
+      <name>Error : failure</name>
+      <bounds>
+        <x>323.0</x>
+        <y>248.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="863e07f7-d595-4c57-88e0-7ae29f3211fc">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>157973de-c825-49f9-af19-0db163fbe953</refId>
+          </destination>
+          <source>
+            <refId>157973de-c825-49f9-af19-0db163fbe953</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>ERROR</returnStepType>
+      <assignments/>
+    </returnStep>
+    <returnStep id="40fe25b9-238e-45c1-935f-8b0a040f7d85">
+      <annotation></annotation>
+      <name>Resolved : success</name>
+      <bounds>
+        <x>713.0</x>
+        <y>118.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="d6f5afab-2de4-4693-a95b-a550fbc1be82">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>40fe25b9-238e-45c1-935f-8b0a040f7d85</refId>
+          </destination>
+          <source>
+            <refId>40fe25b9-238e-45c1-935f-8b0a040f7d85</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>RESOLVED</returnStepType>
+      <assignments/>
+    </returnStep>
+    <step id="c7e93244-e666-42f9-a086-2f9a7c9bb903">
+      <annotation>48c4f481-4b98-4dee-879f-a79cd6c2f184.c7e93244-e666-42f9-a086-2f9a7c9bb903.description</annotation>
+      <name>Add Input</name>
+      <bounds>
+        <x>323.0</x>
+        <y>118.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="37f8c60f-d69c-4f1e-bc0f-643e0439d730">
+        <baseIcon>document_xml.png</baseIcon>
+        <basePath>Operating System/</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="88ffba21-82a5-48ae-a490-be7a70d41c2b">
+          <annotation></annotation>
+          <fromContextKey>runXML</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>xml</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="ab0f34fa-0f60-4f2e-89fb-a6cdfdb41d76">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>filePath</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="5b19d93a-e648-4afb-bba8-19274c35fea2">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>action</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>insert</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="d43a7454-afbc-4aac-887c-b28aa22feeeb">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>xpath1</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>/run</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="0b3b69f6-34fa-43bd-8bfc-1357cc5e6666">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>xpath2</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="41d1a2df-bdd2-410b-9a85-156baf6f266c">
+          <annotation></annotation>
+          <fromContextKey>input</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>value</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="1cad4c37-dd2f-4f5c-a2b0-8b321bd802e1">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>type</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>attr</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="5b3797c6-eaae-40f5-a2c0-38eaf15ccb39">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>name</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>input</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="ecb722d0-450b-4019-8cf6-39229a48a176">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>parsingFeatures</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>http://apache.org/xml/features/disallow-doctype-decl true
+http://xml.org/sax/features/external-general-entities false
+http://xml.org/sax/features/external-parameter-entities false</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="319a9e0d-77b3-40e7-80a3-71d65f7f8a31">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>157973de-c825-49f9-af19-0db163fbe953</refId>
+          </destination>
+          <source>
+            <refId>c7e93244-e666-42f9-a086-2f9a7c9bb903</refId>
+          </source>
+          <positions>
+            <point>
+              <x>310.0</x>
+              <y>151.0</y>
+            </point>
+            <point>
+              <x>310.0</x>
+              <y>281.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="26056f41-d0ae-4c17-ab36-3986d0b7c2d3">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>1a25ebb5-df7f-44f2-a0c9-f64bbff8f9ef</refId>
+          </destination>
+          <source>
+            <refId>c7e93244-e666-42f9-a086-2f9a7c9bb903</refId>
+          </source>
+          <positions>
+            <point>
+              <x>310.0</x>
+              <y>151.0</y>
+            </point>
+            <point>
+              <x>440.0</x>
+              <y>151.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>cb35b17f-3f88-42ab-a319-fb10616bb1fe</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="fa1d998a-88fb-4666-8b0d-2c0dbed07b17">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>runXML</contextKey>
+          <expression id="cc395da1-ea43-4573-8ea0-48e7a064c782">
+            <annotation></annotation>
+            <name>Result Field: returnResult</name>
+            <fieldName>returnResult</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters>
+              <xpathFilter id="495c02ff-6886-464e-b200-31430bdd3a8a">
+                <annotation></annotation>
+                <name>XPath Query</name>
+                <xpathQuery>/*</xpathQuery>
+              </xpathFilter>
+              <stripWhitespaceFilter id="67b261b3-f8b0-4fe7-9aaa-50bc7a995775">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="1a25ebb5-df7f-44f2-a0c9-f64bbff8f9ef">
+      <annotation>48c4f481-4b98-4dee-879f-a79cd6c2f184.1a25ebb5-df7f-44f2-a0c9-f64bbff8f9ef.description</annotation>
+      <name>Add Value</name>
+      <bounds>
+        <x>453.0</x>
+        <y>118.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="9fe2a727-64bd-4c97-ad32-d0e104adf1a4">
+        <baseIcon>document_xml.png</baseIcon>
+        <basePath>Operating System/</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="55a0bd4d-476a-4ab1-9f80-2a848fd17818">
+          <annotation></annotation>
+          <fromContextKey>runXML</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>xml</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="551c4dcb-37db-41cb-b253-b6eac191a1c3">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>filePath</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="32a734a9-9bfb-4b4e-9831-9ebeb23cf664">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>action</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>insert</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="ad30be0f-2c03-4ddc-9825-735c4976860f">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>xpath1</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>/run</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="36e672a7-20af-4de8-95f8-4c6a00ae1f8e">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>xpath2</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="071687a7-abf5-4f19-b662-85889564108c">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>value</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="38fa7201-3f50-4a61-8990-ead9efc9aaff">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>type</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>attr</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="85baa1e4-bcff-4397-a25d-b5559b00bd99">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>name</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>value</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="f9ccb50d-52a8-4d15-a7ac-6a450c94ff10">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>parsingFeatures</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>http://apache.org/xml/features/disallow-doctype-decl true
+http://xml.org/sax/features/external-general-entities false
+http://xml.org/sax/features/external-parameter-entities false</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="7a839eac-fa3b-47e8-af56-cdd05755e2a4">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>157973de-c825-49f9-af19-0db163fbe953</refId>
+          </destination>
+          <source>
+            <refId>1a25ebb5-df7f-44f2-a0c9-f64bbff8f9ef</refId>
+          </source>
+          <positions>
+            <point>
+              <x>440.0</x>
+              <y>151.0</y>
+            </point>
+            <point>
+              <x>310.0</x>
+              <y>281.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="b5ef1434-7a2b-4aef-a9c8-74be319faad9">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>aed2c872-08b2-49aa-8af2-139f5de421a1</refId>
+          </destination>
+          <source>
+            <refId>1a25ebb5-df7f-44f2-a0c9-f64bbff8f9ef</refId>
+          </source>
+          <positions>
+            <point>
+              <x>440.0</x>
+              <y>151.0</y>
+            </point>
+            <point>
+              <x>775.0</x>
+              <y>176.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>cb35b17f-3f88-42ab-a319-fb10616bb1fe</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="1466e423-b2e8-44ea-a762-329737a2aa2e">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>runXML</contextKey>
+          <expression id="9d97c080-ffad-4b9f-829d-2969c481bde5">
+            <annotation></annotation>
+            <name>Result Field: returnResult</name>
+            <fieldName>returnResult</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters>
+              <xpathFilter id="58fbb59b-5df6-4a27-aa14-039d62684bd0">
+                <annotation></annotation>
+                <name>XPath Query</name>
+                <xpathQuery>/*</xpathQuery>
+              </xpathFilter>
+              <stripWhitespaceFilter id="b9db002b-e659-4605-a9d9-dc543aa70835">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+  </steps>
+  <startSteps>f20abd42-11c6-4ebc-80ae-f3ea161701e5</startSteps>
+</flow>
