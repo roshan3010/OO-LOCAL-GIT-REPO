@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow id="57e69a8b-3ca6-45e0-8280-17bae1bfd586">
+  <descriptionCdata><![CDATA[57e69a8b-3ca6-45e0-8280-17bae1bfd586.3a1b7e4e-2d1d-44b9-90fb-bef36d52f75d.description=<pre>\nRuns the requested SQL Command, returns the number of row(s) affected and any lateral effect.\n\nInputs\:\nhost\t- Hostname or IP address of the SQL Server.\nusername\t- The username of the SQL or Windows user credentials to login to the SQL Server.  If use Windows authentication, username input should be in the format like\: domain\\username. \npassword\t- Password of the user account.\ninstance        - The named instance of SQL Server. Leave it blank for default instance.\ndbPort\t- The port on which the SQL Server database service is listening on.\ndatabase \t- The name of the database to run the command on.\nauthType\t- Whether Windows authentication or SQL authentication should be used. Default is SQL.\ncommand \t- The actual SQL command to run (either T-SQL, Stored Procedure, or Extended procedure).\ntimeout \t- Seconds to wait before timing out the SQL command execution. It defaults to 30 seconds.\n\nResult\:\nThe number of rows affected.\n\nExtra results\:\noutputText -\t Output result for the command (if this is the case).\n\nResponses\:\nsuccess \t- The command was successful.\nfailure \t- There was a problem running the command.\n\nNotes\:\n1. When informational commands (like dbcc) are run through the command, end the command with "with tableresults" in order to populate the outputText output with the obtained result.\n2. Use the Sql Query operation instead of Sql Command when Select queries are to be run.\n3. Please refer to the Notes in the Microsoft SQL folder description for the general integration information of Microsoft SQL Server. \n \n</pre>
+]]></descriptionCdata>
+  <annotation></annotation>
+  <name>Generic Stax Procedure Call</name>
+  <categories/>
+  <inputs>
+    <staticBinding id="3476a80c-4194-41b5-bb33-cb18ad7ba98d">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>procedure</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value></value>
+      <record>false</record>
+    </staticBinding>
+  </inputs>
+  <possibleResponses>
+    <opResponse id="79191770-8134-46ec-a159-68948870802d">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>true</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules/>
+    </opResponse>
+    <opResponse id="1069a3b3-7be5-4842-bbf6-034f129d4243">
+      <annotation></annotation>
+      <name>failure</name>
+      <isDefault>false</isDefault>
+      <onFailure>true</onFailure>
+      <type>ERROR</type>
+      <matchRules/>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="b3060e53-6819-4992-aebb-ddcc6a2c71e0">
+    <annotation></annotation>
+    <name>FailureMessage</name>
+    <fieldName>FailureMessage</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="ec0a6849-5de3-482e-88b3-073969956d9a">
+    <baseIcon>flow.png</baseIcon>
+    <basePath>System</basePath>
+    <readOnly>false</readOnly>
+    <layers/>
+  </iconSpec>
+  <callouts/>
+  <checkPointFlow>true</checkPointFlow>
+  <compatibleRuntimeContext>false</compatibleRuntimeContext>
+  <historyCheckPointFlow>true</historyCheckPointFlow>
+  <steps>
+    <step id="3a1b7e4e-2d1d-44b9-90fb-bef36d52f75d">
+      <annotation>57e69a8b-3ca6-45e0-8280-17bae1bfd586.3a1b7e4e-2d1d-44b9-90fb-bef36d52f75d.description</annotation>
+      <name>SQL Command</name>
+      <bounds>
+        <x>93.0</x>
+        <y>155.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="cc08c84e-0e9d-4fa3-ae6a-26df41853b7c">
+        <baseIcon>database_mssql.png</baseIcon>
+        <basePath>Databases/</basePath>
+        <readOnly>false</readOnly>
+        <layers>
+          <iconSpec id="f6df8e0c-1f70-4bf5-9746-d5171c3005ac">
+            <baseIcon>remote.png</baseIcon>
+            <basePath>Annotations/</basePath>
+            <readOnly>false</readOnly>
+            <layers/>
+          </iconSpec>
+        </layers>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="3a2a15b8-d75a-4881-a6e1-6c0dfc058bbe">
+          <annotation></annotation>
+          <toContextKey></toContextKey>
+          <fromContextKey>WBC/Utility Operations/Stax/dbServer</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <recordKey></recordKey>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>false</isPersisted>
+          <inputSymbol>host</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <identityBinding id="79ced4c0-97c9-4277-827d-4dbd3b970590">
+          <annotation></annotation>
+          <toContextKey></toContextKey>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <recordKey></recordKey>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>false</isPersisted>
+          <inputSymbol>username</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+          <link>
+            <refId>5cbdfbec-acf5-4a3b-b85d-4dd3585ecbf3</refId>
+            <refName>staxUser</refName>
+          </link>
+          <identityAttribute>USERNAME</identityAttribute>
+        </identityBinding>
+        <identityBinding id="862b1a40-dca0-4757-bba7-40359631812a">
+          <annotation></annotation>
+          <toContextKey></toContextKey>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>ENCRYPTED</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>false</isPersisted>
+          <inputSymbol>password</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+          <link>
+            <refId>5cbdfbec-acf5-4a3b-b85d-4dd3585ecbf3</refId>
+            <refName>staxUser</refName>
+          </link>
+          <identityAttribute>PASSWORD</identityAttribute>
+        </identityBinding>
+        <staticBinding id="2fffaa75-cdcf-44a5-9c9f-5b7e33a65399">
+          <annotation></annotation>
+          <fromContextKey>WBC/Utility Operations/Stax/dbInstance</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>instance</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="feb4556a-0488-40ec-a010-8bc90933af2b">
+          <annotation></annotation>
+          <fromContextKey>WBC/Utility Operations/Stax/dbPort</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>dbPort</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="1ac13a2d-7996-4c47-9cd8-2ab25fa071ed">
+          <annotation></annotation>
+          <toContextKey></toContextKey>
+          <fromContextKey>WBC/Utility Operations/Stax/staxDbName</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <recordKey></recordKey>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>false</isPersisted>
+          <inputSymbol>database</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="e5a8a755-7f21-437c-971a-e551e8e6bf4e">
+          <annotation></annotation>
+          <toContextKey></toContextKey>
+          <fromContextKey>WBC/Utility Operations/Stax/authType</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <recordKey></recordKey>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>false</isPersisted>
+          <inputSymbol>authType</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="39e7f258-8be3-470b-8103-1ea9acafa8c8">
+          <annotation></annotation>
+          <toContextKey>command</toContextKey>
+          <fromContextKey>procedure</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>true</assignToContext>
+          <inputType>STRING</inputType>
+          <recordKey></recordKey>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>false</isPersisted>
+          <inputSymbol>command</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="7f3f2b79-127d-4adf-b42d-8876455444ee">
+          <annotation></annotation>
+          <fromContextKey>WBC/Utility Operations/Stax/executionTimeout</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>timeout</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>30</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="fc263134-ad69-4322-9238-24ff490b4e4b">
+          <annotation></annotation>
+          <name>Procedure Success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>4bf01bcf-b419-4c5c-b879-d8a1c9bd6cb5</refId>
+          </destination>
+          <source>
+            <refId>3a1b7e4e-2d1d-44b9-90fb-bef36d52f75d</refId>
+          </source>
+          <positions>
+            <point>
+              <x>143.0</x>
+              <y>189.0</y>
+            </point>
+            <point>
+              <x>341.0</x>
+              <y>186.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="f6a45d65-0efa-41dd-b784-7e0ca6343554">
+          <annotation></annotation>
+          <name>Procedure Failed</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>06eac63f-40bb-4ad9-abc9-7fa0a4a18f43</refId>
+          </destination>
+          <source>
+            <refId>3a1b7e4e-2d1d-44b9-90fb-bef36d52f75d</refId>
+          </source>
+          <positions>
+            <point>
+              <x>143.0</x>
+              <y>189.0</y>
+            </point>
+            <point>
+              <x>134.0</x>
+              <y>369.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>de12af1f-6926-4c90-9391-0a4becadda2f</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="4ed46ddb-2afb-4f0f-8e3f-55c70819e693">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>errorMessage</contextKey>
+          <expression id="505bdbf2-0141-45a5-bfc2-c0f0950d19f2">
+            <annotation></annotation>
+            <name>Result Field: FailureMessage</name>
+            <fieldName>FailureMessage</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="78fd89c3-dedf-4515-bcf2-b53ee0359eb1">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>procedureResult</contextKey>
+          <expression id="1fff52ad-5f21-4c82-beb3-d7d34de492c0">
+            <annotation></annotation>
+            <name>Result Field: Result</name>
+            <fieldName>Result</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <returnStep id="4bf01bcf-b419-4c5c-b879-d8a1c9bd6cb5">
+      <annotation></annotation>
+      <name>Resolved : success</name>
+      <bounds>
+        <x>291.0</x>
+        <y>152.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="198ef8a3-3645-47ad-a7f0-6a726ff7d227">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>4bf01bcf-b419-4c5c-b879-d8a1c9bd6cb5</refId>
+          </destination>
+          <source>
+            <refId>4bf01bcf-b419-4c5c-b879-d8a1c9bd6cb5</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>RESOLVED</returnStepType>
+      <assignments/>
+    </returnStep>
+    <returnStep id="06eac63f-40bb-4ad9-abc9-7fa0a4a18f43">
+      <annotation></annotation>
+      <name>Error : failure</name>
+      <bounds>
+        <x>94.0</x>
+        <y>335.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="5d29c100-ed33-479d-a022-2620083822db">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>automationFailureFlag</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>True</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="1a423d58-878a-4c9a-bcc0-ca722e8dd4f1">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>errorMessage</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>Failed to execute Procedure call</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="d2155e68-c02a-4a68-a269-2f46f3f6c75d">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>06eac63f-40bb-4ad9-abc9-7fa0a4a18f43</refId>
+          </destination>
+          <source>
+            <refId>06eac63f-40bb-4ad9-abc9-7fa0a4a18f43</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>ERROR</returnStepType>
+      <assignments>
+        <flowVariableAssignment id="c5a7b237-b3eb-494b-acb7-10580f5b1973">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>automationFailureFlag</contextKey>
+          <expression id="0932c453-fca0-4527-9125-d4764bea332d">
+            <annotation></annotation>
+            <name>Input: automationFailureFlag</name>
+            <fieldName>automationFailureFlag</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="752fedfa-787c-4f32-8fc0-d75ea5ddb2d4">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>errorMessage</contextKey>
+          <expression id="3b79479f-dcad-42dc-9ce8-4554a1735e17">
+            <annotation></annotation>
+            <name>Input: errorMessage</name>
+            <fieldName>errorMessage</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+    </returnStep>
+  </steps>
+  <startSteps>3a1b7e4e-2d1d-44b9-90fb-bef36d52f75d</startSteps>
+</flow>
